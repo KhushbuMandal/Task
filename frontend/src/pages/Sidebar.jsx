@@ -40,7 +40,7 @@ export default function Component() {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/auth/groups");
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/groups`);
         if (response.status === 200) {
           setGroups(response.data);
         } else {
@@ -88,7 +88,7 @@ export default function Component() {
       
       try {
         // Make API call to store the new group in the database
-        const response = await axios.post('http://localhost:5000/api/auth/groups', newGroup);
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/groups`, newGroup);
         console.log (response);
         if (response.status === 201) {
           // Successfully created group, update the local state
